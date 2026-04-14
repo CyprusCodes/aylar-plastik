@@ -109,7 +109,7 @@ export function HeroSection() {
                       }`}
                     >
                       <Image
-                        src={withBasePath(image.src)}
+                        src={image.src}
                         alt={image.alt}
                         fill
                         sizes="(max-width: 1024px) 100vw, 50vw"

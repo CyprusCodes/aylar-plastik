@@ -28,21 +28,27 @@ const productCards: ProductCard[] = [
     title: "Industrial Packaging Solutions",
     description:
       "Reliable plastic packaging support for production, transport, and commercial operations.",
-    images: [withBasePath("/images/03.webp"), withBasePath("/images/04.webp")],
+    images: [
+      withBasePath("/images/03.webp"),
+      withBasePath("/images/04.webp"),
+    ]
   },
   {
     label: "Production",
     title: "Flexible Production Support",
     description:
       "Adaptable manufacturing solutions for custom orders, repeat volumes, and changing needs.",
-    images: [withBasePath("/images/05.webp"), withBasePath("/images/06.webp")],
+    images: [
+      withBasePath("/images/05.webp"),
+      withBasePath("/images/06.webp"),
+    ]
   },
   {
     label: "Packaging",
     title: "Custom Plastic Packaging",
     description:
       "Tailored packaging formats for retail, industrial distribution, and brand-specific requirements.",
-    images: [withBasePath("/images/07.webp"), withBasePath("/images/03.webp")],
+    images: [withBasePath("/images/07.webp"), withBasePath("/images/03.webp"),],
     featured: true,
   },
 ];
@@ -78,7 +84,7 @@ function ProductImageSlider({
           }`}
         >
           <Image
-            src={withBasePath(image)}
+            src={image}
             alt={alt}
             fill
             priority={priority && index === 0}
