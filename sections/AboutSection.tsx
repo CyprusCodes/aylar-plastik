@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { withBasePath } from "@/lib/base-path";
 
 const compactHighlights = [
   "Founded in 1978",
@@ -81,7 +82,7 @@ export function AboutSection() {
               <div className="overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white shadow-[0_24px_58px_rgba(15,23,42,0.08)]">
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                   <Image
-                    src="/images/07.webp"
+                    src={withBasePath("/images/07.webp")}
                     alt="Modern industrial plastic manufacturing facility"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"

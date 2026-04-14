@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { withBasePath } from "@/lib/base-path";
 
 const navigationLinks = [
   { href: "/#home", label: "Home" },
@@ -27,7 +28,7 @@ export function Footer() {
 >
   <div className="relative h-[5rem] w-[7.25rem] shrink-0">
     <Image
-      src="/logo.webp"
+      src={withBasePath("/logo.webp")}
       alt="Aylar Plastik Logo"
       fill
       sizes="116px"

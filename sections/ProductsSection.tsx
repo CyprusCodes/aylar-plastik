@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { withBasePath } from "@/lib/base-path";
 
 type ProductCard = {
   label: string;
@@ -17,28 +18,31 @@ const productCards: ProductCard[] = [
     title: "Printed Plastic Bags",
     description:
       "Printed bag solutions for visibility, functionality, and everyday packaging use.",
-    images: ["/images/01.webp", "/images/02.webp"],
+    images: [
+  withBasePath("/images/01.webp"),
+  withBasePath("/images/02.webp"),
+]
   },
   {
     label: "Industrial",
     title: "Industrial Packaging Solutions",
     description:
       "Reliable plastic packaging support for production, transport, and commercial operations.",
-    images: ["/images/03.webp", "/images/04.webp"],
+    images: [withBasePath("/images/03.webp"), withBasePath("/images/04.webp")],
   },
   {
     label: "Production",
     title: "Flexible Production Support",
     description:
       "Adaptable manufacturing solutions for custom orders, repeat volumes, and changing needs.",
-    images: ["/images/05.webp", "/images/06.webp"],
+    images: [withBasePath("/images/05.webp"), withBasePath("/images/06.webp")],
   },
   {
     label: "Packaging",
     title: "Custom Plastic Packaging",
     description:
       "Tailored packaging formats for retail, industrial distribution, and brand-specific requirements.",
-    images: ["/images/07.webp", "/images/03.webp"],
+    images: [withBasePath("/images/07.webp"), withBasePath("/images/03.webp")],
     featured: true,
   },
 ];
@@ -74,7 +78,7 @@ function ProductImageSlider({
           }`}
         >
           <Image
-            src={image}
+            src={withBasePath(image)}
             alt={alt}
             fill
             priority={priority && index === 0}

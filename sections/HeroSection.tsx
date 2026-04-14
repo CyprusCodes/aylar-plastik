@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { withBasePath } from "@/lib/base-path";
 
 const trustIndicators = [
   "Custom production",
@@ -12,15 +13,15 @@ const trustIndicators = [
 
 const heroImages = [
   {
-    src: "/images/01.webp",
+    src: withBasePath("/images/01.webp"),
     alt: "Plastic production inside an industrial manufacturing facility",
   },
   {
-    src: "/images/04.webp",
+    src: withBasePath("/images/04.webp"),
     alt: "Industrial packaging and plastic bag production",
   },
   {
-    src: "/images/06.webp",
+    src:withBasePath("/images/06.webp"),
     alt: "Modern factory equipment for packaging manufacturing",
   },
 ];
@@ -108,7 +109,7 @@ export function HeroSection() {
                       }`}
                     >
                       <Image
-                        src={image.src}
+                        src={withBasePath(image.src)}
                         alt={image.alt}
                         fill
                         sizes="(max-width: 1024px) 100vw, 50vw"

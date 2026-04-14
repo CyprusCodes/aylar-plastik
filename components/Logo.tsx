@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { withBasePath } from "@/lib/base-path";
 
 type LogoProps = {
   className?: string;
@@ -14,7 +15,7 @@ export function Logo({ className = "" }: LogoProps) {
     >
       <div className="relative h-[2.5rem] w-[4.2rem] shrink-0 min-[360px]:w-[5rem] sm:h-[7rem] sm:w-[17.5rem]">
         <Image
-          src="/logo.webp"
+          src={withBasePath("/logo.webp")}
           alt="Aylar Plastik Logo"
           fill
           priority

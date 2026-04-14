@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
   basePath: isProd ? "/aylar-plastik" : "",
   assetPrefix: isProd ? "/aylar-plastik/" : "",
   trailingSlash: true,
+  devIndicators: false,
 };
 
 export default nextConfig;
