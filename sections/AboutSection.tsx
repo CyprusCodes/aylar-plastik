@@ -65,16 +65,16 @@ export function AboutSection() {
               </div>
 
               <div className="mt-6 grid max-w-2xl gap-2.5">
-  {compactHighlights.map((highlight) => (
-    <div
-      key={highlight}
-      className="flex h-9 w-[15rem] items-center gap-2 rounded-full border border-slate-200 bg-white px-4 text-sm font-medium text-slate-700 shadow-[0_8px_20px_rgba(15,23,42,0.03)]"
-    >
-      <span className="h-2 w-2 rounded-full bg-[#D6B24A]" />
-      <span>{highlight}</span>
-    </div>
-  ))}
-</div>
+                {compactHighlights.map((highlight) => (
+                  <div
+                    key={highlight}
+                    className="flex min-h-9 w-full max-w-[15rem] items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-[0_8px_20px_rgba(15,23,42,0.03)]"
+                  >
+                    <span className="h-2 w-2 rounded-full bg-[#D6B24A]" />
+                    <span>{highlight}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="space-y-4">

@@ -38,13 +38,13 @@ export function Navbar() {
     >
       <div className="container-shell">
         <div
-          className={`flex items-center justify-between gap-6 transition-all duration-300 ${
-            isScrolled ? "h-[4.75rem] sm:h-[4.5rem]" : "h-[5.15rem] sm:h-20"
+          className={`flex items-center justify-between gap-3 transition-all duration-300 sm:gap-6 ${
+            isScrolled ? "h-[4.1rem] sm:h-[4.5rem]" : "h-[4.45rem] sm:h-20"
           }`}
         >
-          <div className="flex min-w-0 flex-1 items-center">
-  <Logo />
-</div>
+          <div className="flex min-w-0 max-w-[calc(100vw-5rem)] items-center pr-2 sm:max-w-none sm:pr-0">
+            <Logo />
+          </div>
 
           <nav
             aria-label="Primary"
@@ -72,7 +72,7 @@ export function Navbar() {
             aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((current) => !current)}
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-800 transition-colors duration-200 hover:border-amber-300 hover:bg-amber-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-4 focus-visible:ring-offset-white active:bg-amber-100 md:hidden"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-800 transition-colors duration-200 hover:border-amber-300 hover:bg-amber-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-4 focus-visible:ring-offset-white active:bg-amber-100 md:h-11 md:w-11 md:hidden"
           >
             <span className="relative block h-4 w-5">
               <span
