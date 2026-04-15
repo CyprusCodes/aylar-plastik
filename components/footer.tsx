@@ -21,7 +21,7 @@ export function Footer() {
       <div className="container-shell py-14 sm:py-16">
         <div className="grid gap-10 sm:grid-cols-2 xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.7fr)_minmax(0,0.9fr)_minmax(0,0.7fr)]">
           <div className="space-y-5">
-           <Link
+           <a
   href="/#home"
   className="inline-flex items-center text-white transition-opacity duration-200 hover:opacity-90"
   aria-label="Aylar Plastik homepage"
@@ -44,7 +44,7 @@ export function Footer() {
       Modern plastic manufacturing
     </span>
   </div>
-</Link>
+</a>
 
             <p className="max-w-sm text-sm leading-7 text-white/70">
               Aylar Plastik delivers dependable plastic manufacturing solutions
@@ -59,13 +59,23 @@ export function Footer() {
             </h2>
             <nav aria-label="Footer" className="mt-5 grid gap-3 text-sm text-white/70">
               {navigationLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="transition-colors duration-200 hover:text-white"
-                >
-                  {link.label}
-                </Link>
+                link.href.startsWith("/#") ? (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className="transition-colors duration-200 hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="transition-colors duration-200 hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                )
               ))}
             </nav>
           </div>
@@ -87,13 +97,23 @@ export function Footer() {
             </h2>
             <div className="mt-5 grid gap-3 text-sm text-white/70">
               {socialLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="transition-colors duration-200 hover:text-white"
-                >
-                  {link.label}
-                </Link>
+                link.href.startsWith("/#") ? (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className="transition-colors duration-200 hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="transition-colors duration-200 hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                )
               ))}
             </div>
           </div>
