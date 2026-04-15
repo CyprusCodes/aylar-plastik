@@ -3,15 +3,15 @@ import Link from "next/link";
 import { withBasePath } from "@/lib/base-path";
 
 const navigationLinks = [
-  { href: "/#home", label: "Home" },
-  { href: "/#about", label: "About" },
-  { href: "/#products", label: "Products" },
-  { href: "/#contact", label: "Contact" },
+  { href: "#home", label: "Home" },
+  { href: "#about", label: "About" },
+  { href: "#products", label: "Products" },
+  { href: "#contact", label: "Contact" },
   { href: "/privacy-policy", label: "Privacy Policy" },
 ];
 
 const socialLinks = [
-  { href: "/#contact", label: "Request Quote" },
+  { href: "#contact", label: "Request Quote" },
   { href: "mailto:info@aylarplastik.com", label: "Email Us" },
 ];
 
@@ -22,7 +22,7 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.7fr)_minmax(0,0.9fr)_minmax(0,0.7fr)]">
           <div className="space-y-5">
            <a
-  href="/#home"
+  href="#home"
   className="inline-flex items-center text-white transition-opacity duration-200 hover:opacity-90"
   aria-label="Aylar Plastik homepage"
 >
@@ -59,7 +59,7 @@ export function Footer() {
             </h2>
             <nav aria-label="Footer" className="mt-5 grid gap-3 text-sm text-white/70">
               {navigationLinks.map((link) => (
-                link.href.startsWith("/#") ? (
+                link.href.startsWith("#") ? (
                   <a
                     key={link.label}
                     href={link.href}
@@ -97,7 +97,7 @@ export function Footer() {
             </h2>
             <div className="mt-5 grid gap-3 text-sm text-white/70">
               {socialLinks.map((link) => (
-                link.href.startsWith("/#") ? (
+                link.href.startsWith("#") ? (
                   <a
                     key={link.label}
                     href={link.href}
