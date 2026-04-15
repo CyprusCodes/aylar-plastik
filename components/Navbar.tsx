@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 import { Logo } from "@/components/Logo";
 
 const navigationItems = [
-  { href: "#home", label: "Home" },
-  { href: "#products", label: "Products" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#about", label: "About" },
+  { href: "/#products", label: "Products" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Navbar() {
@@ -50,30 +51,20 @@ export function Navbar() {
             className="hidden items-center gap-8 lg:gap-9 md:flex"
           >
             {navigationItems.map((item) => (
-              item.href.startsWith("#") ? (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="relative text-sm font-medium tracking-[0.02em] text-slate-600 transition-colors duration-200 hover:text-[#0A1A2F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-4 focus-visible:ring-offset-white"
-                >
-                  {item.label}
-                </a>
-              ) : (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="relative text-sm font-medium tracking-[0.02em] text-slate-600 transition-colors duration-200 hover:text-[#0A1A2F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-4 focus-visible:ring-offset-white"
-                >
-                  {item.label}
-                </Link>
-              )
+              <Link
+                key={item.label}
+                href={item.href}
+                className="relative text-sm font-medium tracking-[0.02em] text-slate-600 transition-colors duration-200 hover:text-[#0A1A2F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-4 focus-visible:ring-offset-white"
+              >
+                {item.label}
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               className="inline-flex min-w-31 items-center justify-center rounded-full bg-[#0A1A2F] px-5 py-3 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(10,26,47,0.22)] transition-all duration-200 hover:bg-[#11253C] hover:text-white hover:shadow-[0_16px_34px_rgba(10,26,47,0.24),0_0_0_1px_rgba(214,178,74,0.18),0_0_24px_rgba(214,178,74,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-4 focus-visible:ring-offset-white active:translate-y-px"
             >
               <span className="text-white">Get Quote</span>
-            </a>
+            </Link>
           </nav>
 
           <button
@@ -114,33 +105,22 @@ export function Navbar() {
           >
             <div className="flex flex-col gap-2">
               {navigationItems.map((item) => (
-                item.href.startsWith("#") ? (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition-colors duration-200 hover:bg-amber-50 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                  >
-                    {item.label}
-                  </a>
-                ) : (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition-colors duration-200 hover:bg-amber-50 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                  >
-                    {item.label}
-                  </Link>
-                )
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition-colors duration-200 hover:bg-amber-50 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                >
+                  {item.label}
+                </Link>
               ))}
-              <a
-                href="contact"
+              <Link
+                href="/#contact"
                 onClick={() => setIsMenuOpen(false)}
                 className="mt-2 inline-flex items-center justify-center rounded-full bg-[#0A1A2F] px-5 py-3 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(10,26,47,0.22)] transition-all duration-200 hover:bg-[#11253C] hover:shadow-[0_16px_34px_rgba(10,26,47,0.24),0_0_0_1px_rgba(214,178,74,0.18),0_0_24px_rgba(214,178,74,0.20)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white active:translate-y-px"
               >
                 <span className="text-white">Get Quote</span>
-              </a>
+              </Link>
             </div>
           </nav>
         </div>
