@@ -4,7 +4,7 @@ import { withBasePath } from "@/lib/base-path";
 const compactHighlights = [
   "Founded in 1978",
   "Custom programs",
-  "Quality-controlled output",
+  "Quality control",
 ];
 
 const supportingCards = [
@@ -45,7 +45,7 @@ export function AboutSection() {
                 id="about-title"
                 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-[3rem] lg:leading-[1.05]"
               >
-                A modern plastic manufacturing partner focused on quality,
+                A modern plastic manufacturing and packaging partner focused on quality,
                 flexibility, and reliable delivery.
               </h2>
 
@@ -61,20 +61,15 @@ export function AboutSection() {
                   We support a wide range of industries with scalable
                   solutions, including printed plastic bags, industrial
                   packaging, and custom production programs designed for
-                  long-term operational reliability.
+                  long-term operational reliability. Our agricultural
+                  venture pioneered north of Cyprus to adapt to modern
+                  needs in agriculture with our drip irrigation systems
+                  and modern irrigation solutions.
                 </p>
-              </div>
-
-              <div className="mt-6 grid max-w-2xl gap-2.5">
-                {compactHighlights.map((highlight) => (
-                  <div
-                    key={highlight}
-                    className="flex min-h-9 w-full max-w-[15rem] items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-[0_8px_20px_rgba(15,23,42,0.03)]"
-                  >
-                    <span className="h-2 w-2 rounded-full bg-[#D6B24A]" />
-                    <span>{highlight}</span>
-                  </div>
-                ))}
+                <p>
+                  After almost 50 years in the industry we are determined
+                  to serve our customers with determination and loyalty to our values.
+                </p>
               </div>
             </div>
 
@@ -112,10 +107,22 @@ export function AboutSection() {
                   </article>
                 ))}
               </div>
+
+             <div className="grid gap-2.5 sm:grid-cols-3">
+  {compactHighlights.map((highlight) => (
+    <div
+      key={highlight}
+      className="flex min-h-9 items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-[0_8px_20px_rgba(15,23,42,0.03)]"
+    >
+      <span className="h-2 w-2 shrink-0 rounded-full bg-[var(--accent)]" />
+      <span className="truncate">{highlight}</span>
+    </div>
+  ))}
+</div>
             </div>
           </div>
 
-          <div className="mt-5 rounded-[1.7rem] border border-slate-200/80 bg-[#0A1A2F] px-5 py-4 text-white shadow-[0_24px_60px_rgba(10,26,47,0.18)] sm:px-6">
+          <div className="mt-4 rounded-[1.7rem] border border-slate-200/80 bg-[#0A1A2F] px-5 py-4 text-white shadow-[0_24px_60px_rgba(10,26,47,0.18)] sm:px-6">
             <div className="grid gap-3 sm:grid-cols-3 sm:gap-5">
               <p className="text-sm font-semibold leading-6 text-white/92">
                 Quality-led production management

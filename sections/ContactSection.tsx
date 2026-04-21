@@ -32,14 +32,15 @@ export function ContactSection() {
                 <p className="text-xs tracking-[0.18em] text-white/70 uppercase">
                   Phone
                 </p>
-                <p className="mt-2 text-lg font-semibold">+90 (___) ___ __ __</p>
+                <p className="mt-2 text-lg font-semibold">+90 (392) 364 8666 </p>
+                <p className="mt-2 text-lg font-semibold">+90 (533) 848 9500 </p>
               </div>
               <div>
                 <p className="text-xs tracking-[0.18em] text-white/70 uppercase">
                   Address
                 </p>
                 <p className="mt-2 text-lg font-semibold">
-                  Industrial production and packaging operations, North Cyprus
+                  Hasan Güvenir Caddesi, Büyük Sanayi Bölgesi, Tuzla/Gazimağusa
                 </p>
               </div>
             </div>

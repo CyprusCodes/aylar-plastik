@@ -76,8 +76,9 @@ export function Footer() {
             </h2>
             <div className="mt-5 space-y-4 text-sm text-white/70">
               <p>info@aylarplastik.com</p>
-              <p>+90 (___) ___ __ __</p>
-              <p>Industrial production and packaging operations, North Cyprus</p>
+              <p>+90 (392) 364 8666 </p>
+              <p>+90 (533) 848 9500 </p>
+              <p> Hasan Güvenir Caddesi, Büyük Sanayi Bölgesi, Tuzla/Gazimağusa </p>
             </div>
           </div>
 

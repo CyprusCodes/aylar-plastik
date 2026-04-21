@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { withBasePath } from "@/lib/base-path";
 
 type ProductCard = {
@@ -9,7 +9,6 @@ type ProductCard = {
   title: string;
   description: string;
   images: string[];
-  featured?: boolean;
 };
 
 const productCards: ProductCard[] = [
@@ -19,9 +18,9 @@ const productCards: ProductCard[] = [
     description:
       "Printed bag solutions for visibility, functionality, and everyday packaging use.",
     images: [
-  withBasePath("/images/01.webp"),
-  withBasePath("/images/02.webp"),
-]
+      withBasePath("/images/01.webp"),
+      withBasePath("/images/02.webp"),
+    ],
   },
   {
     label: "Industrial",
@@ -31,7 +30,7 @@ const productCards: ProductCard[] = [
     images: [
       withBasePath("/images/03.webp"),
       withBasePath("/images/04.webp"),
-    ]
+    ],
   },
   {
     label: "Production",
@@ -41,15 +40,24 @@ const productCards: ProductCard[] = [
     images: [
       withBasePath("/images/05.webp"),
       withBasePath("/images/06.webp"),
-    ]
+    ],
+  },
+  {
+    label: "Agricultural",
+    title: "Agricultural Solutions",
+    description:
+      "Agricultural plastic solutions including greenhouse films, irrigation pipes, drip systems, and modern irrigation equipment.",
+    images: [withBasePath("/images/placeholder.webp")],
   },
   {
     label: "Packaging",
     title: "Custom Plastic Packaging",
     description:
-      "Tailored packaging formats for retail, industrial distribution, and brand-specific requirements.",
-    images: [withBasePath("/images/07.webp"), withBasePath("/images/03.webp"),],
-    featured: true,
+      "Please enquire for any packaging need. We offer custom solutions for your need including paper bags, bubble wraps and plastic bottles.",
+    images: [
+      withBasePath("/images/07.webp"),
+      withBasePath("/images/03.webp"),
+    ],
   },
 ];
 
@@ -98,9 +106,75 @@ function ProductImageSlider({
   );
 }
 
+function ProductCardItem({
+  card,
+  priority = false,
+}: {
+  card: ProductCard;
+  priority?: boolean;
+}) {
+  return (
+    <article className="group h-full overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_16px_40px_rgba(15,23,42,0.045)] transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_22px_52px_rgba(15,23,42,0.08)]">
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <ProductImageSlider
+          images={card.images}
+          alt={card.title}
+          priority={priority}
+        />
+      </div>
+
+      <div className="space-y-3 px-6 py-6">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--accent-strong)]">
+          {card.label}
+        </p>
+
+        <h3 className="text-xl font-semibold leading-7 text-slate-950">
+          {card.title}
+        </h3>
+
+        <p className="text-sm leading-7 text-slate-600">
+          {card.description}
+        </p>
+      </div>
+    </article>
+  );
+}
+
 export function ProductsSection() {
-  const standardCards = productCards.filter((card) => !card.featured);
-  const featuredCard = productCards.find((card) => card.featured);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(3);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1280) {
+        setCardsPerView(3);
+      } else if (window.innerWidth >= 768) {
+        setCardsPerView(2);
+      } else {
+        setCardsPerView(1);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const maxIndex = Math.max(0, productCards.length - cardsPerView);
+
+  useEffect(() => {
+    if (activeIndex > maxIndex) {
+      setActiveIndex(maxIndex);
+    }
+  }, [activeIndex, maxIndex]);
+
+  const translatePercentage = useMemo(() => {
+    return activeIndex * (100 / cardsPerView);
+  }, [activeIndex, cardsPerView]);
+
+  const goPrev = () => setActiveIndex((prev) => Math.max(0, prev - 1));
+  const goNext = () => setActiveIndex((prev) => Math.min(maxIndex, prev + 1));
 
   return (
     <section
@@ -110,82 +184,82 @@ export function ProductsSection() {
     >
       <div className="container-shell">
         <div className="rounded-[2rem] border border-slate-200/80 bg-[radial-gradient(circle_at_right,_rgba(232,217,168,0.18),_transparent_24%),linear-gradient(180deg,_#ffffff_0%,_#fbfcfd_100%)] px-6 py-10 shadow-[0_24px_60px_rgba(15,23,42,0.06)] sm:px-8 sm:py-12 lg:px-10">
-          <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--accent-strong)]">
-              Our Plastic Solutions
-            </p>
-            <h2
-              id="products-title"
-              className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-slate-950 sm:text-4xl"
-            >
-              Discover Our Packaging Solutions
-            </h2>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
-              Aylar Plastik provides custom plastic packaging solutions for
-              commercial and industrial applications, including printed bags,
-              flexible packaging, and dependable production support.
-            </p>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--accent-strong)]">
+                Our Plastic Solutions
+              </p>
+              <h2
+                id="products-title"
+                className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-slate-950 sm:text-4xl"
+              >
+                Discover Our Packaging Solutions
+              </h2>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+                Aylar Plastik provides custom plastic packaging solutions for
+                commercial and industrial applications, including printed bags,
+                flexible packaging, and dependable production support.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3 self-start lg:self-auto">
+              <button
+                type="button"
+                onClick={goPrev}
+                disabled={activeIndex === 0}
+                aria-label="Previous products"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition-all duration-200 hover:border-[var(--accent)] hover:text-slate-950 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                <span className="text-xl leading-none">←</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={goNext}
+                disabled={activeIndex === maxIndex}
+                aria-label="Next products"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition-all duration-200 hover:border-[var(--accent)] hover:text-slate-950 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                <span className="text-xl leading-none">→</span>
+              </button>
+            </div>
           </div>
 
-          <div className="mt-10 grid gap-5 xl:grid-cols-3">
-            {standardCards.map((card, index) => (
-              <article
-                key={card.title}
-                className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_16px_40px_rgba(15,23,42,0.045)] transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_22px_52px_rgba(15,23,42,0.08)]"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <ProductImageSlider
-                    images={card.images}
-                    alt={card.title}
-                    priority={index === 0}
-                  />
+          <div className="mt-10 overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-out"
+              style={{
+                transform: `translateX(-${translatePercentage}%)`,
+              }}
+            >
+              {productCards.map((card, index) => (
+                <div
+                  key={card.title}
+                  className="shrink-0 px-2"
+                  style={{ width: `${100 / cardsPerView}%` }}
+                >
+                  <ProductCardItem card={card} priority={index === 0} />
                 </div>
+              ))}
+            </div>
+          </div>
 
-                <div className="space-y-3 px-6 py-6">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--accent-strong)]">
-                    {card.label}
-                  </p>
-
-                  <h3 className="text-xl font-semibold leading-7 text-slate-950">
-                    {card.title}
-                  </h3>
-
-                  <p className="text-sm leading-7 text-slate-600">
-                    {card.description}
-                  </p>
-                </div>
-              </article>
+          <div className="mt-6 flex items-center justify-center gap-2">
+            {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                aria-label={`Go to products slide ${index + 1}`}
+                aria-pressed={activeIndex === index}
+                onClick={() => setActiveIndex(index)}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  activeIndex === index
+                    ? "w-6 bg-[var(--accent)]"
+                    : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                }`}
+              />
             ))}
           </div>
-
-          {featuredCard ? (
-            <article className="mt-6 overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_18px_46px_rgba(15,23,42,0.05)]">
-              <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
-                <div className="relative min-h-[280px] overflow-hidden lg:min-h-[380px]">
-                  <ProductImageSlider
-                    images={featuredCard.images}
-                    alt={featuredCard.title}
-                  />
-                </div>
-
-                <div className="flex items-center px-6 py-8 sm:px-8 lg:px-9">
-                  <div className="max-w-sm space-y-4">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--accent-strong)]">
-                      {featuredCard.label}
-                    </p>
-
-                    <h3 className="text-2xl font-semibold leading-tight text-slate-950 sm:text-[2rem]">
-                      {featuredCard.title}
-                    </h3>
-
-                    <p className="text-sm leading-7 text-slate-600 sm:text-base">
-                      {featuredCard.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </article>
-          ) : null}
         </div>
       </div>
     </section>

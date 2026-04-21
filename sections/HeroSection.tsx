@@ -61,7 +61,7 @@ export function HeroSection() {
               id="hero-title"
               className="max-w-3xl text-[2rem] font-semibold leading-[0.98] tracking-[-0.045em] text-slate-950 sm:text-5xl sm:leading-[1.02] lg:text-[3.6rem]"
             >
-              Premium Plastic Packaging Solutions for Industrial Needs
+              Premium Plastic Packaging Solutions for Your Needs
             </h1>
 
             <p className="mt-5 max-w-xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
