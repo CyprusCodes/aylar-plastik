@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const STORAGE_KEY = "aylar-cookie-consent";
 
@@ -31,6 +32,8 @@ const getSnapshot = () => window.localStorage.getItem(STORAGE_KEY);
 const getServerSnapshot = () => null;
 
 export function CookieBanner() {
+  const { t } = useLanguage();
+
   const storedChoice = useSyncExternalStore(
     subscribe,
     getSnapshot,
@@ -58,12 +61,12 @@ export function CookieBanner() {
             </div>
 
             <p className="text-sm leading-5 text-white/80">
-              We use cookies to improve your experience and analyze site usage.{" "}
+              {t.cookieBanner.text}{" "}
               <Link
                 href="/cookie-policy"
                 className="font-medium text-[#D6B24A] underline decoration-[#D6B24A]/50 underline-offset-4 transition-colors duration-200 hover:text-[#E8D9A8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A1A2F]"
               >
-                Cookie Policy
+                {t.cookieBanner.policy}
               </Link>
             </p>
           </div>
@@ -74,7 +77,7 @@ export function CookieBanner() {
               onClick={() => handleChoice("rejected")}
               className="inline-flex h-10 w-full items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 text-sm font-medium text-white/80 transition-colors duration-200 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A1A2F] min-[360px]:w-auto"
             >
-              Reject
+              {t.cookieBanner.reject}
             </button>
 
             <button
@@ -82,7 +85,7 @@ export function CookieBanner() {
               onClick={() => handleChoice("accepted")}
               className="inline-flex h-10 w-full items-center justify-center rounded-full bg-[#D6B24A] px-4 text-sm font-semibold text-[#0A1A2F] transition-colors duration-200 hover:bg-[#E8D9A8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A1A2F] min-[360px]:w-auto"
             >
-              Accept
+              {t.cookieBanner.accept}
             </button>
           </div>
         </div>

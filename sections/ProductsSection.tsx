@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { withBasePath } from "@/lib/base-path";
+import { useLanguage } from "@/context/LanguageContext";
 
 type ProductCard = {
   label: string;
@@ -10,56 +11,6 @@ type ProductCard = {
   description: string;
   images: string[];
 };
-
-const productCards: ProductCard[] = [
-  {
-    label: "Printed Bags",
-    title: "Printed Plastic Bags",
-    description:
-      "Printed bag solutions for visibility, functionality, and everyday packaging use.",
-    images: [
-      withBasePath("/images/01.webp"),
-      withBasePath("/images/02.webp"),
-    ],
-  },
-  {
-    label: "Industrial",
-    title: "Industrial Packaging Solutions",
-    description:
-      "Reliable plastic packaging support for production, transport, and commercial operations.",
-    images: [
-      withBasePath("/images/03.webp"),
-      withBasePath("/images/04.webp"),
-    ],
-  },
-  {
-    label: "Production",
-    title: "Flexible Production Support",
-    description:
-      "Adaptable manufacturing solutions for custom orders, repeat volumes, and changing needs.",
-    images: [
-      withBasePath("/images/05.webp"),
-      withBasePath("/images/06.webp"),
-    ],
-  },
-  {
-    label: "Agricultural",
-    title: "Agricultural Solutions",
-    description:
-      "Agricultural plastic solutions including greenhouse films, irrigation pipes, drip systems, and modern irrigation equipment.",
-    images: [withBasePath("/images/placeholder.webp")],
-  },
-  {
-    label: "Packaging",
-    title: "Custom Plastic Packaging",
-    description:
-      "Please enquire for any packaging need. We offer custom solutions for your need including paper bags, bubble wraps and plastic bottles.",
-    images: [
-      withBasePath("/images/07.webp"),
-      withBasePath("/images/03.webp"),
-    ],
-  },
-];
 
 function ProductImageSlider({
   images,
@@ -141,6 +92,50 @@ function ProductCardItem({
 }
 
 export function ProductsSection() {
+  const { t } = useLanguage();
+
+  const productCards: ProductCard[] = [
+    {
+      ...t.products.cards[0],
+      images: [
+        withBasePath("/images/01.webp"),
+        withBasePath("/images/02.webp"),
+      ],
+    },
+    {
+      ...t.products.cards[1],
+      images: [
+        withBasePath("/images/08.jpeg"),
+        withBasePath("/images/16.jpg"),
+        withBasePath("/images/17.jpg"),
+      ],
+    },
+    {
+      ...t.products.cards[2],
+      images: [
+        withBasePath("/images/05.webp"),
+        withBasePath("/images/06.webp"),
+      ],
+    },
+    {
+      ...t.products.cards[3],
+      images: [
+        withBasePath("/images/10.jpg"),
+        withBasePath("/images/11.jpg"),
+        withBasePath("/images/12.jpg"),
+        withBasePath("/images/13.jpg"),
+        withBasePath("/images/14.jpg"),
+      ],
+    },
+    {
+      ...t.products.cards[4],
+      images: [
+        withBasePath("/images/07.webp"),
+        withBasePath("/images/03.webp"),
+      ],
+    },
+  ];
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(3);
 
@@ -187,18 +182,16 @@ export function ProductsSection() {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--accent-strong)]">
-                Our Plastic Solutions
+                {t.products.eyebrow}
               </p>
               <h2
                 id="products-title"
                 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-slate-950 sm:text-4xl"
               >
-                Discover Our Packaging Solutions
+                {t.products.title}
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
-                Aylar Plastik provides custom plastic packaging solutions for
-                commercial and industrial applications, including printed bags,
-                flexible packaging, and dependable production support.
+                {t.products.description}
               </p>
             </div>
 
@@ -207,7 +200,7 @@ export function ProductsSection() {
                 type="button"
                 onClick={goPrev}
                 disabled={activeIndex === 0}
-                aria-label="Previous products"
+                aria-label={t.products.previous}
                 className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition-all duration-200 hover:border-[var(--accent)] hover:text-slate-950 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <span className="text-xl leading-none">←</span>
@@ -217,7 +210,7 @@ export function ProductsSection() {
                 type="button"
                 onClick={goNext}
                 disabled={activeIndex === maxIndex}
-                aria-label="Next products"
+                aria-label={t.products.next}
                 className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition-all duration-200 hover:border-[var(--accent)] hover:text-slate-950 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <span className="text-xl leading-none">→</span>
@@ -249,7 +242,7 @@ export function ProductsSection() {
               <button
                 key={index}
                 type="button"
-                aria-label={`Go to products slide ${index + 1}`}
+                aria-label={`${t.products.slideLabel} ${index + 1}`}
                 aria-pressed={activeIndex === index}
                 onClick={() => setActiveIndex(index)}
                 className={`h-2.5 rounded-full transition-all duration-300 ${

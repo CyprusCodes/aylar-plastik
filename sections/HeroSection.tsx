@@ -4,24 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { withBasePath } from "@/lib/base-path";
-
-const trustIndicators = [
-  "Custom production",
-  "Quality assurance",
-  "Fast delivery",
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 const heroImages = [
   {
-    src: withBasePath("/images/01.webp"),
+    src: withBasePath("/images/15.jpg"),
     alt: "Plastic production inside an industrial manufacturing facility",
   },
   {
-    src: withBasePath("/images/04.webp"),
+    src: withBasePath("/images/19.jpg"),
     alt: "Industrial packaging and plastic bag production",
   },
   {
-    src:withBasePath("/images/06.webp"),
+    src: withBasePath("/images/18.jpg"),
     alt: "Modern factory equipment for packaging manufacturing",
   },
 ];
@@ -29,6 +24,7 @@ const heroImages = [
 const SLIDE_INTERVAL_MS = 5600;
 
 export function HeroSection() {
+  const { t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -53,7 +49,7 @@ export function HeroSection() {
             <div className="mb-4 flex flex-col items-start gap-3 min-[430px]:mb-5 min-[430px]:flex-row min-[430px]:items-center min-[430px]:gap-4">
               <span className="h-px w-10 bg-[linear-gradient(90deg,_rgba(214,178,74,0.84),_rgba(232,217,168,0.18))] min-[430px]:w-14" />
               <p className="max-w-full whitespace-normal rounded-full border border-[rgba(214,178,74,0.28)] bg-[rgba(247,243,232,0.92)] px-3 py-1.5 text-[9px] font-semibold leading-[1.25] tracking-[0.12em] text-[var(--accent-strong)] uppercase shadow-sm sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.24em]">
-                Reliable Plastic Manufacturing
+                {t.hero.badge}
               </p>
             </div>
 
@@ -61,13 +57,11 @@ export function HeroSection() {
               id="hero-title"
               className="max-w-3xl text-[2rem] font-semibold leading-[0.98] tracking-[-0.045em] text-slate-950 sm:text-5xl sm:leading-[1.02] lg:text-[3.6rem]"
             >
-              Premium Plastic Packaging Solutions for Your Needs
+              {t.hero.title}
             </h1>
 
             <p className="mt-5 max-w-xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-              Aylar Plastik provides high-quality custom packaging solutions,
-              including printed plastic bags, industrial packaging, and
-              flexible production services tailored to your business.
+              {t.hero.description}
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -75,18 +69,18 @@ export function HeroSection() {
                 href="#contact"
                 className="inline-flex min-h-13 w-full items-center justify-center rounded-full bg-[#0A1A2F] px-7 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(10,26,47,0.18)] transition-all duration-200 hover:bg-[#132A44] hover:text-white hover:shadow-[0_18px_36px_rgba(10,26,47,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-4 focus-visible:ring-offset-[#fcfcfb] active:translate-y-px sm:w-auto"
               >
-                <span className="text-white">Get a Quote</span>
+                <span className="text-white">{t.hero.primaryButton}</span>
               </Link>
               <Link
                 href="#products"
                 className="inline-flex min-h-13 w-full items-center justify-center rounded-full border border-[rgba(214,178,74,0.28)] bg-white px-7 text-sm font-semibold text-slate-900 shadow-[0_8px_20px_rgba(15,23,42,0.05)] transition-all duration-200 hover:border-[rgba(214,178,74,0.5)] hover:bg-[rgba(247,243,232,0.55)] hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-4 focus-visible:ring-offset-[#fcfcfb] active:translate-y-px sm:w-auto"
               >
-                Explore Products
+                {t.hero.secondaryButton}
               </Link>
             </div>
 
             <ul className="mt-6 flex flex-col gap-3 text-sm text-slate-600 sm:flex-row sm:flex-wrap sm:gap-6">
-              {trustIndicators.map((item) => (
+              {t.hero.trustIndicators.map((item) => (
                 <li key={item} className="flex items-center gap-3">
                   <span className="h-2.5 w-2.5 rounded-full bg-[#D6B24A]" />
                   <span>{item}</span>
