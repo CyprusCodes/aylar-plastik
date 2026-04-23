@@ -8,16 +8,20 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const heroImages = [
   {
-    src: withBasePath("/images/15.jpg"),
+    src: withBasePath("/images/07.webp"),
     alt: "Plastic production inside an industrial manufacturing facility",
   },
   {
-    src: withBasePath("/images/19.jpg"),
+    src: withBasePath("/images/10.jpg"),
     alt: "Industrial packaging and plastic bag production",
   },
   {
-    src: withBasePath("/images/18.jpg"),
+    src: withBasePath("/images/17.jpg"),
     alt: "Modern factory equipment for packaging manufacturing",
+  },
+  {
+    src: withBasePath("/images/04.webp"),
+    alt: "packaging manufacturing",
   },
 ];
 

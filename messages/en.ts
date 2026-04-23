@@ -161,10 +161,70 @@ const en = {
   cookie: {
     badge: "Cookie Policy",
     title: "Cookie Policy",
+    intro:
+      "This website uses cookies to improve user experience and analyze website performance.",
+    sections: [
+      {
+        title: "What Are Cookies",
+        body: "Cookies are small text files stored on your device when you visit a website.",
+      },
+      {
+        title: "How We Use Cookies",
+        body: "We use cookies to ensure the website functions properly, improve user experience, and analyze website usage.",
+      },
+      {
+        title: "Types of Cookies We Use",
+        body: "We may use essential cookies required for site functionality and analytics cookies to understand how visitors use the site.",
+      },
+      {
+        title: "Third-Party Cookies",
+        body: "We may use third-party services such as analytics tools that place cookies on your device.",
+      },
+      {
+        title: "Managing Cookies",
+        body: "You can control or disable cookies through your browser settings.",
+      },
+      {
+        title: "Consent",
+        body: "By using our website, you consent to our use of cookies in accordance with this policy.",
+      },
+    ],
+    contactTitle: "Contact",
+    contactBody: "For more information, you can contact us at info@aylarplastik.com.",
   },
   privacy: {
     badge: "Privacy Policy",
     title: "Privacy Policy",
+    intro:
+      "Aylar Plastik is committed to protecting your privacy. This policy explains how we collect, use, and protect your personal information.",
+    sections: [
+      {
+        title: "Information We Collect",
+        body: "We may collect information such as your name, company name, email address, phone number, and any details you provide in your message.",
+      },
+      {
+        title: "How We Use Your Information",
+        body: "We use your information to respond to inquiries, provide quotations or product information, and improve our services and communication.",
+      },
+      {
+        title: "Data Sharing",
+        body: "We do not sell or share your personal data with third parties, except when required by law or necessary to provide our services.",
+      },
+      {
+        title: "Data Storage",
+        body: "Your information is stored securely and only for as long as necessary to fulfill your request or communication.",
+      },
+      {
+        title: "Your Rights",
+        body: "You may request access, correction, or deletion of your personal data by contacting us.",
+      },
+      {
+        title: "Updates",
+        body: "This policy may be updated from time to time to reflect changes in our practices or legal obligations.",
+      },
+    ],
+    contactTitle: "Contact",
+    contactBody: "For any questions regarding this policy or your data, please contact us at info@aylarplastik.com.",
   },
 },
 } as const;

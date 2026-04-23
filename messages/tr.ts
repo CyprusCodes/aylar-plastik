@@ -161,10 +161,70 @@ const tr = {
   cookie: {
     badge: "Çerez Politikası",
     title: "Çerez Politikası",
+    intro:
+      "Bu web sitesi, kullanıcı deneyimini geliştirmek ve site performansını analiz etmek için çerezler kullanır.",
+    sections: [
+      {
+        title: "Çerez Nedir",
+        body: "Çerezler, bir web sitesini ziyaret ettiğinizde cihazınızda saklanan küçük metin dosyalarıdır.",
+      },
+      {
+        title: "Çerezleri Nasıl Kullanıyoruz",
+        body: "Çerezleri sitenin düzgün çalışmasını sağlamak, kullanıcı deneyimini iyileştirmek ve site kullanımını analiz etmek için kullanıyoruz.",
+      },
+      {
+        title: "Kullandığımız Çerez Türleri",
+        body: "Site işlevselliği için gerekli zorunlu çerezleri ve ziyaretçilerin siteyi nasıl kullandığını anlamaya yardımcı olan analiz çerezlerini kullanabiliriz.",
+      },
+      {
+        title: "Üçüncü Taraf Çerezleri",
+        body: "Analitik araçlar gibi üçüncü taraf hizmetler kullanıyor olabiliriz ve bu hizmetler cihazınıza çerez yerleştirebilir.",
+      },
+      {
+        title: "Çerezleri Yönetme",
+        body: "Çerezleri tarayıcı ayarlarınız üzerinden kontrol edebilir veya devre dışı bırakabilirsiniz.",
+      },
+      {
+        title: "Onay",
+        body: "Web sitemizi kullanarak, bu politika kapsamında çerez kullanımımızı kabul etmiş olursunuz.",
+      },
+    ],
+    contactTitle: "İletişim",
+    contactBody: "Daha fazla bilgi için info@aylarplastik.com adresinden bizimle iletişime geçebilirsiniz.",
   },
   privacy: {
     badge: "Gizlilik Politikası",
     title: "Gizlilik Politikası",
+    intro:
+      "Aylar Plastik gizliliğinizi korumayı taahhüt eder. Bu politika, kişisel bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklar.",
+    sections: [
+      {
+        title: "Topladığımız Bilgiler",
+        body: "Adınız, şirket adınız, e-posta adresiniz, telefon numaranız ve mesajınızda paylaştığınız bilgiler gibi verileri toplayabiliriz.",
+      },
+      {
+        title: "Bilgilerinizi Nasıl Kullanıyoruz",
+        body: "Bilgilerinizi taleplerinize yanıt vermek, teklif veya ürün bilgisi sağlamak ve hizmetlerimizi ve iletişimimizi geliştirmek için kullanırız.",
+      },
+      {
+        title: "Veri Paylaşımı",
+        body: "Kişisel verilerinizi satmayız veya üçüncü taraflarla paylaşmayız; ancak yasal zorunluluklar veya hizmet sunumu için gerekli durumlar istisnadır.",
+      },
+      {
+        title: "Veri Saklama",
+        body: "Bilgileriniz güvenli şekilde saklanır ve yalnızca talebinizi veya iletişiminizi yerine getirmek için gerekli olduğu süre boyunca tutulur.",
+      },
+      {
+        title: "Haklarınız",
+        body: "Bizimle iletişime geçerek kişisel verilerinize erişim, düzeltme veya silme talebinde bulunabilirsiniz.",
+      },
+      {
+        title: "Güncellemeler",
+        body: "Bu politika, uygulamalarımızdaki veya yasal yükümlülüklerdeki değişiklikleri yansıtmak amacıyla zaman zaman güncellenebilir.",
+      },
+    ],
+    contactTitle: "İletişim",
+    contactBody: "Bu politika veya verilerinizle ilgili sorularınız için info@aylarplastik.com adresinden bizimle iletişime geçebilirsiniz.",
   },
 },
 } as const;

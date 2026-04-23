@@ -98,8 +98,8 @@ export function ProductsSection() {
     {
       ...t.products.cards[0],
       images: [
-        withBasePath("/images/01.webp"),
         withBasePath("/images/02.webp"),
+        withBasePath("/images/07.webp"),
       ],
     },
     {
@@ -108,6 +108,7 @@ export function ProductsSection() {
         withBasePath("/images/08.jpeg"),
         withBasePath("/images/16.jpg"),
         withBasePath("/images/17.jpg"),
+        withBasePath("/images/01.webp"),
       ],
     },
     {
@@ -115,6 +116,7 @@ export function ProductsSection() {
       images: [
         withBasePath("/images/05.webp"),
         withBasePath("/images/06.webp"),
+        withBasePath("/images/04.webp"),
       ],
     },
     {
@@ -130,7 +132,9 @@ export function ProductsSection() {
     {
       ...t.products.cards[4],
       images: [
-        withBasePath("/images/07.webp"),
+        withBasePath("/images/15.jpg"),
+        withBasePath("/images/18.jpg"),
+        withBasePath("/images/19.jpg"),
         withBasePath("/images/03.webp"),
       ],
     },
