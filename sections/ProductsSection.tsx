@@ -9,6 +9,7 @@ type ProductCard = {
   label: string;
   title: string;
   description: string;
+  items: readonly string[];
   images: string[];
 };
 
@@ -34,10 +35,10 @@ function ProductImageSlider({
   }, [images]);
 
   return (
-    <div className="relative h-full w-full overflow-hidden">
+    <div className="relative h-full w-full overflow-hidden bg-slate-50">
       {images.map((image, index) => (
         <div
-          key={image}
+          key={`${image}-${index}`}
           className={`absolute inset-0 transition-opacity duration-700 ${
             index === activeIndex ? "opacity-100" : "opacity-0"
           }`}
@@ -50,7 +51,6 @@ function ProductImageSlider({
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
             className="object-cover"
           />
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(10,26,47,0.04)_0%,rgba(10,26,47,0.24)_100%)]" />
         </div>
       ))}
     </div>
@@ -60,13 +60,19 @@ function ProductImageSlider({
 function ProductCardItem({
   card,
   priority = false,
+  viewProductsLabel,
+  hideProductsLabel,
 }: {
   card: ProductCard;
   priority?: boolean;
+  viewProductsLabel: string;
+  hideProductsLabel: string;
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <article className="group h-full overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_16px_40px_rgba(15,23,42,0.045)] transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_22px_52px_rgba(15,23,42,0.08)]">
-      <div className="relative aspect-[4/3] overflow-hidden">
+      <div className="relative aspect-[4/3] overflow-hidden bg-slate-50">
         <ProductImageSlider
           images={card.images}
           alt={card.title}
@@ -74,18 +80,62 @@ function ProductCardItem({
         />
       </div>
 
-      <div className="space-y-3 px-6 py-6">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--accent-strong)]">
-          {card.label}
-        </p>
+      <div className="flex min-h-[270px] flex-col px-6 py-6">
+        <div className="space-y-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--accent-strong)]">
+            {card.label}
+          </p>
 
-        <h3 className="text-xl font-semibold leading-7 text-slate-950">
-          {card.title}
-        </h3>
+          <h3 className="text-xl font-semibold leading-7 text-slate-950">
+            {card.title}
+          </h3>
 
-        <p className="text-sm leading-7 text-slate-600">
-          {card.description}
-        </p>
+          <p className="min-h-[84px] text-sm leading-7 text-slate-600 line-clamp-3">
+  {card.description}
+</p>
+        </div>
+<div className="mt-auto pt-4">
+  <button
+    type="button"
+    onClick={() => setIsOpen((current) => !current)}
+    aria-expanded={isOpen}
+    className="inline-flex min-h-10 items-center justify-center rounded-full border border-slate-200 bg-white px-4 text-sm font-semibold text-[#0A1A2F] shadow-[0_8px_20px_rgba(15,23,42,0.04)] transition-all duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent-tint)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+  >
+    {isOpen ? hideProductsLabel : viewProductsLabel}
+    <span
+      className={`ml-2 inline-block transition-transform duration-300 ${
+        isOpen ? "rotate-180" : ""
+      }`}
+      aria-hidden="true"
+    >
+      ↓
+    </span>
+  </button>
+</div>
+
+        <div
+          className={`grid transition-all duration-300 ease-out ${
+            isOpen
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <div className="mt-1 rounded-[1.25rem] border border-slate-200 bg-[linear-gradient(180deg,_#ffffff_0%,_#fbfcfd_100%)] p-4">
+              <ul className="space-y-2">
+  {card.items.map((item) => (
+    <li
+      key={item}
+      className="flex items-start gap-2 text-sm text-slate-700"
+    >
+      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--accent)] shrink-0" />
+      <span>{item}</span>
+    </li>
+  ))}
+</ul>
+            </div>
+          </div>
+        </div>
       </div>
     </article>
   );
@@ -114,14 +164,6 @@ export function ProductsSection() {
     {
       ...t.products.cards[2],
       images: [
-        withBasePath("/images/05.webp"),
-        withBasePath("/images/06.webp"),
-        withBasePath("/images/04.webp"),
-      ],
-    },
-    {
-      ...t.products.cards[3],
-      images: [
         withBasePath("/images/10.jpg"),
         withBasePath("/images/11.jpg"),
         withBasePath("/images/12.jpg"),
@@ -130,7 +172,7 @@ export function ProductsSection() {
       ],
     },
     {
-      ...t.products.cards[4],
+      ...t.products.cards[3],
       images: [
         withBasePath("/images/15.jpg"),
         withBasePath("/images/18.jpg"),
@@ -232,10 +274,15 @@ export function ProductsSection() {
               {productCards.map((card, index) => (
                 <div
                   key={card.title}
-                  className="shrink-0 px-2"
+                  className="shrink-0 self-start px-2"
                   style={{ width: `${100 / cardsPerView}%` }}
                 >
-                  <ProductCardItem card={card} priority={index === 0} />
+                  <ProductCardItem
+                    card={card}
+                    priority={index === 0}
+                    viewProductsLabel={t.products.viewProducts}
+                    hideProductsLabel={t.products.hideProducts}
+                  />
                 </div>
               ))}
             </div>

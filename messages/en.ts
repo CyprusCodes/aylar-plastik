@@ -57,47 +57,71 @@ const en = {
       "Responsive support from inquiry to delivery",
     ],
   },
-  products: {
-    eyebrow: "Our Plastic Solutions",
-    title: "Discover Our Packaging Solutions",
-    description:
-      "Aylar Plastik provides custom plastic packaging solutions for commercial and industrial applications, including printed bags, flexible packaging, and dependable production support.",
-    previous: "Previous products",
-    next: "Next products",
-    slideLabel: "Go to products slide",
-    cards: [
-      {
-        label: "Printed Bags",
-        title: "Printed Plastic Bags",
-        description:
-          "Printed bag solutions for visibility, functionality, and everyday packaging use.",
-      },
-      {
-        label: "Industrial",
-        title: "Industrial Packaging Solutions",
-        description:
-          "Reliable plastic packaging support for production, transport, and commercial operations.",
-      },
-      {
-        label: "Production",
-        title: "Flexible Production Support",
-        description:
-          "Adaptable manufacturing solutions for custom orders, repeat volumes, and changing needs.",
-      },
-      {
-        label: "Agricultural",
-        title: "Agricultural Solutions",
-        description:
-          "Agricultural plastic solutions including greenhouse films, irrigation pipes, drip systems, and modern irrigation equipment.",
-      },
-      {
-        label: "Packaging",
-        title: "Custom Plastic Packaging",
-        description:
-          "Please enquire for any packaging need. We offer custom solutions for your need including paper bags, bubble wraps and plastic bottles.",
-      },
-    ],
-  },
+ products: {
+  eyebrow: "Our Plastic Solutions",
+  title: "Discover Our Packaging Solutions",
+  description:
+    "Aylar Plastik provides custom plastic packaging solutions for commercial, industrial, agricultural, and packaging applications.",
+  previous: "Previous products",
+  next: "Next products",
+  slideLabel: "Go to products slide",
+  viewProducts: "View Products",
+  hideProducts: "Hide Products",
+  cards: [
+    {
+      label: "Printed Bags",
+      title: "Printed Plastic Bags",
+      description:
+        "Printed plastic bag solutions designed for brand visibility, daily use, and reliable packaging performance.",
+      items: [
+        "Printed plastic bags",
+        "Custom logo bags",
+        "Retail bags",
+        "Shopping bags",
+        "Promotional bags",
+      ],
+    },
+    {
+      label: "Industrial",
+      title: "Industrial Packaging Solutions",
+      description:
+        "Durable packaging support for production, transport, storage, and commercial operations.",
+      items: [
+        "Industrial plastic bags",
+        "Heavy-duty packaging",
+        "Production packaging",
+        "Transport packaging",
+        "Protective plastic packaging",
+      ],
+    },
+    {
+      label: "Agricultural",
+      title: "Agricultural Solutions",
+      description:
+        "Agricultural plastic solutions for greenhouse use, irrigation systems, and modern farming needs.",
+      items: [
+        "Greenhouse films",
+        "Irrigation pipes",
+        "Drip irrigation systems",
+        "Agricultural plastic films",
+        "Modern irrigation equipment",
+      ],
+    },
+    {
+      label: "Packaging",
+      title: "Custom Plastic Packaging",
+      description:
+        "Custom packaging solutions for different product types, presentation needs, and business requirements.",
+      items: [
+        "Paper bags",
+        "Bubble wrap",
+        "Plastic bottles",
+        "Custom packaging products",
+        "Tailored packaging solutions",
+      ],
+    },
+  ],
+},
   contact: {
     eyebrow: "Contact",
     title: "Discuss your project, request a quote, or contact our team directly.",

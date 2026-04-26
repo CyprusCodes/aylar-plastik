@@ -57,47 +57,71 @@ const tr = {
       "Talep aşamasından teslimata duyarlı destek",
     ],
   },
-  products: {
-    eyebrow: "Plastik Çözümlerimiz",
-    title: "Ambalaj Çözümlerimizi Keşfedin",
-    description:
-      "Aylar Plastik; baskılı poşetler, esnek ambalaj ve güvenilir üretim desteği dahil olmak üzere ticari ve endüstriyel kullanıma yönelik özel plastik ambalaj çözümleri sunar.",
-    previous: "Önceki ürünler",
-    next: "Sonraki ürünler",
-    slideLabel: "Ürün slaydına git",
-    cards: [
-      {
-        label: "Baskılı Poşetler",
-        title: "Baskılı Plastik Poşetler",
-        description:
-          "Görünürlük, işlevsellik ve günlük ambalaj kullanımı için baskılı poşet çözümleri.",
-      },
-      {
-        label: "Endüstriyel",
-        title: "Endüstriyel Ambalaj Çözümleri",
-        description:
-          "Üretim, taşıma ve ticari operasyonlar için güvenilir plastik ambalaj desteği.",
-      },
-      {
-        label: "Üretim",
-        title: "Esnek Üretim Desteği",
-        description:
-          "Özel siparişler, sürekli hacimler ve değişen ihtiyaçlar için uyarlanabilir üretim çözümleri.",
-      },
-      {
-        label: "Tarımsal",
-        title: "Tarımsal Çözümler",
-        description:
-          "Sera filmleri, sulama boruları, damla sistemleri ve modern sulama ekipmanlarını içeren tarımsal plastik çözümleri.",
-      },
-      {
-        label: "Ambalaj",
-        title: "Özel Plastik Ambalaj",
-        description:
-          "Her türlü ambalaj ihtiyacınız için bizimle iletişime geçebilirsiniz. Kağıt çantalar, balonlu ambalajlar ve plastik şişeler dahil özel çözümler sunuyoruz.",
-      },
-    ],
-  },
+products: {
+  eyebrow: "Plastik Çözümlerimiz",
+  title: "Ambalaj Çözümlerimizi Keşfedin",
+  description:
+    "Aylar Plastik; ticari, endüstriyel, tarımsal ve özel ambalaj ihtiyaçlarına yönelik plastik çözümler sunar.",
+  previous: "Önceki ürünler",
+  next: "Sonraki ürünler",
+  slideLabel: "Ürün slaydına git",
+  viewProducts: "Ürünlerimiz",
+  hideProducts: "Ürünleri Gizle",
+  cards: [
+    {
+      label: "Baskılı Poşetler",
+      title: "Baskılı Plastik Poşetler",
+      description:
+        "Marka görünürlüğü, günlük kullanım ve güvenilir ambalaj performansı için baskılı plastik poşet çözümleri.",
+      items: [
+        "Baskılı plastik poşetler",
+        "Logolu özel poşetler",
+        "Mağaza poşetleri",
+        "Alışveriş poşetleri",
+        "Promosyon poşetleri",
+      ],
+    },
+    {
+      label: "Endüstriyel",
+      title: "Endüstriyel Ambalaj Çözümleri",
+      description:
+        "Üretim, taşıma, depolama ve ticari operasyonlar için dayanıklı ambalaj desteği.",
+      items: [
+        "Endüstriyel plastik poşetler",
+        "Ağır hizmet ambalajları",
+        "Üretim ambalajları",
+        "Taşıma ambalajları",
+        "Koruyucu plastik ambalajlar",
+      ],
+    },
+    {
+      label: "Tarımsal",
+      title: "Tarımsal Çözümler",
+      description:
+        "Sera kullanımı, sulama sistemleri ve modern tarım ihtiyaçlarına yönelik tarımsal plastik çözümleri.",
+      items: [
+        "Sera örtüleri",
+        "Sulama boruları",
+        "Damla sulama sistemleri",
+        "Tarımsal plastik filmler",
+        "Modern sulama ekipmanları",
+      ],
+    },
+    {
+      label: "Ambalaj",
+      title: "Özel Plastik Ambalaj",
+      description:
+        "Farklı ürün tipleri, sunum ihtiyaçları ve işletme gereksinimleri için özel ambalaj çözümleri.",
+      items: [
+        "Kağıt çantalar",
+        "Balonlu ambalaj",
+        "Plastik şişeler",
+        "Özel ambalaj ürünleri",
+        "İhtiyaca özel ambalaj çözümleri",
+      ],
+    },
+  ],
+},
   contact: {
     eyebrow: "İletişim",
     title: "Projenizi görüşün, teklif alın veya ekibimizle doğrudan iletişime geçin.",
