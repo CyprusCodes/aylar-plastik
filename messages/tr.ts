@@ -145,6 +145,9 @@ products: {
           "Ürününüz, üretim ihtiyaçlarınız, miktar veya teklif talebiniz hakkında bilgi verin.",
       },
       submit: "Talep Gönder",
+      sending: "Gönderiliyor...",
+      success: "Talebiniz alınmıştır. Ekibimiz en kısa sürede sizinle iletişime geçecektir.",
+      error: "Bir hata oluştu. Lütfen tekrar deneyin.",
     },
   },
   subscribe: {

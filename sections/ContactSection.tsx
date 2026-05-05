@@ -1,9 +1,49 @@
 "use client";
 
+import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function ContactSection() {
   const { t } = useLanguage();
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzUGsYIpYETaw7ocRzBc73jJ0zfOgFyJpQL-OkNAClRrwlBa5zV9zxmaNz7PXSZn1b2/exec";
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!SCRIPT_URL) {
+      setSubmitStatus("error");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    formData.append("sheet", "contact_requests");
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors",
+      });
+
+      form.reset();
+      setSubmitStatus("success");
+    } catch {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section
@@ -17,12 +57,14 @@ export function ContactSection() {
             <p className="text-xs font-semibold tracking-[0.24em] text-amber-300 uppercase">
               {t.contact.eyebrow}
             </p>
+
             <h2
               id="contact-title"
               className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl"
             >
               {t.contact.title}
             </h2>
+
             <p className="mt-5 max-w-xl text-base leading-8 text-white/70">
               {t.contact.description}
             </p>
@@ -32,47 +74,58 @@ export function ContactSection() {
                 <p className="text-xs tracking-[0.18em] text-white/70 uppercase">
                   {t.contact.email}
                 </p>
-                <p className="mt-2 text-lg font-semibold">info@aylarplastik.com</p>
+                <p className="mt-2 text-lg font-semibold">
+                  info@aylarplastik.com
+                </p>
               </div>
+
               <div>
                 <p className="text-xs tracking-[0.18em] text-white/70 uppercase">
                   {t.contact.phone}
                 </p>
-                <p className="mt-2 text-lg font-semibold">+90 (392) 364 8666</p>
-                <p className="mt-2 text-lg font-semibold">+90 (533) 848 9500</p>
+                <p className="mt-2 text-lg font-semibold">
+                  +90 (392) 364 8666
+                </p>
+                <p className="mt-2 text-lg font-semibold">
+                  +90 (533) 848 9500
+                </p>
               </div>
+
               <div>
                 <p className="text-xs tracking-[0.18em] text-white/70 uppercase">
                   {t.contact.address}
                 </p>
                 <p className="mt-2 text-lg font-semibold">
-                  Hasan Güvenir Caddesi, Büyük Sanayi Bölgesi, Tuzla/Gazimağusa
+                  Hasan Güvenir Caddesi, Büyük Sanayi Bölgesi,
+                  Tuzla/Gazimağusa
                 </p>
               </div>
             </div>
           </div>
 
           <div className="rounded-[2rem] border border-slate-200/80 bg-[radial-gradient(circle_at_top_left,_rgba(247,243,232,0.92),_transparent_22%),linear-gradient(180deg,_#ffffff_0%,_#fbfcfd_100%)] px-6 py-10 shadow-[0_24px_60px_rgba(15,23,42,0.06)] sm:px-8 sm:py-12">
-            <form className="grid gap-5" action="#">
+            <form className="grid gap-5" onSubmit={handleSubmit}>
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="grid gap-2">
                   <span className="text-sm font-medium text-slate-800">
                     {t.contact.form.name}
                   </span>
                   <input
+                    required
                     type="text"
-                    name="name"
+                    name="Name"
                     className="min-h-13 rounded-2xl border border-slate-200 bg-white px-4 text-sm text-slate-950 outline-none transition-colors duration-200 placeholder:text-slate-400 focus:border-amber-300"
                     placeholder={t.contact.form.placeholders.name}
                   />
                 </label>
+
                 <label className="grid gap-2">
                   <span className="text-sm font-medium text-slate-800">
                     {t.contact.form.company}
                   </span>
                   <input
                     type="text"
-                    name="company"
+                    name="Company"
                     className="min-h-13 rounded-2xl border border-slate-200 bg-white px-4 text-sm text-slate-950 outline-none transition-colors duration-200 placeholder:text-slate-400 focus:border-amber-300"
                     placeholder={t.contact.form.placeholders.company}
                   />
@@ -85,19 +138,21 @@ export function ContactSection() {
                     {t.contact.form.email}
                   </span>
                   <input
+                    required
                     type="email"
-                    name="email"
+                    name="Email"
                     className="min-h-13 rounded-2xl border border-slate-200 bg-white px-4 text-sm text-slate-950 outline-none transition-colors duration-200 placeholder:text-slate-400 focus:border-amber-300"
                     placeholder={t.contact.form.placeholders.email}
                   />
                 </label>
+
                 <label className="grid gap-2">
                   <span className="text-sm font-medium text-slate-800">
                     {t.contact.form.phone}
                   </span>
                   <input
                     type="tel"
-                    name="phone"
+                    name="Phone"
                     className="min-h-13 rounded-2xl border border-slate-200 bg-white px-4 text-sm text-slate-950 outline-none transition-colors duration-200 placeholder:text-slate-400 focus:border-amber-300"
                     placeholder={t.contact.form.placeholders.phone}
                   />
@@ -109,7 +164,8 @@ export function ContactSection() {
                   {t.contact.form.projectDetails}
                 </span>
                 <textarea
-                  name="message"
+                  required
+                  name="Message"
                   rows={6}
                   className="rounded-[1.5rem] border border-slate-200 bg-white px-4 py-4 text-sm text-slate-950 outline-none transition-colors duration-200 placeholder:text-slate-400 focus:border-amber-300"
                   placeholder={t.contact.form.placeholders.message}
@@ -119,11 +175,27 @@ export function ContactSection() {
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <button
                   type="submit"
-                  className="inline-flex min-h-13 items-center justify-center rounded-full bg-[#0A1A2F] px-7 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(10,26,47,0.18)] transition-all duration-200 hover:bg-[#132A44] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-4 focus-visible:ring-offset-white active:translate-y-px"
+                  disabled={isSubmitting}
+                  className="inline-flex min-h-13 items-center justify-center rounded-full bg-[#0A1A2F] px-7 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(10,26,47,0.18)] transition-all duration-200 hover:bg-[#132A44] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-4 focus-visible:ring-offset-white active:translate-y-px disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {t.contact.form.submit}
+                  {isSubmitting ? t.contact.form.sending : t.contact.form.submit}
                 </button>
               </div>
+
+              {submitStatus === "success" ? (
+                <div className="mt-2 flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
+  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-green-600 text-white text-xs">
+    ✓
+  </span>
+  <span>{t.contact.form.success}</span>
+</div>
+              ) : null}
+
+              {submitStatus === "error" ? (
+                <p className="text-sm font-medium text-red-600">
+                  {t.contact.form.error}
+                </p>
+              ) : null}
             </form>
           </div>
         </div>

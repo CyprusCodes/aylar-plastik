@@ -145,6 +145,9 @@ const en = {
           "Tell us about your product, production needs, quantities, or quote request.",
       },
       submit: "Send Inquiry",
+      sending: "Sending...",
+      success: "Your request has been received. Our team will contact you shortly.",
+      error: "Something went wrong. Please try again.",
     },
   },
   subscribe: {
