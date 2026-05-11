@@ -254,6 +254,12 @@ products: {
     contactBody: "Bu politika veya verilerinizle ilgili sorularınız için info@aylarplastik.com adresinden bizimle iletişime geçebilirsiniz.",
   },
 },
+references: {
+  eyebrow: "Referanslar",
+  title: "Müşteri ve Referanslarımız",
+  description:
+    "Ambalaj, üretim ve endüstriyel tedarik ihtiyaçlarında Aylar Plastik ile çalışan bazı marka ve işletmeler.",
+},
 } as const;
 
 export default tr;

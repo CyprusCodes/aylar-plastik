@@ -254,6 +254,12 @@ const en = {
     contactBody: "For any questions regarding this policy or your data, please contact us at info@aylarplastik.com.",
   },
 },
+references: {
+  eyebrow: "References",
+  title: "Clients and References",
+  description:
+    "A selection of brands and businesses that have worked with Aylar Plastik across packaging, production, and industrial supply needs.",
+},
 } as const;
 
 export default en;

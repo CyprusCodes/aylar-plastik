@@ -75,3 +75,21 @@ img {
 .section-space {
   padding-block: clamp(4rem, 8vw, 7rem);
 }
+
+@keyframes reference-scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-reference-scroll-right {
+  animation: reference-scroll-right 42s linear infinite;
+}
+
+.animate-reference-scroll-right:hover {
+  animation-play-state: paused;
+}
