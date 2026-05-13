@@ -174,7 +174,7 @@ const en = {
     ],
     socialLinks: [
       { href: "/#contact", label: "Request Quote" },
-      { href: "mailto:info@aylarplastik.com", label: "Email Us" },
+      { href: "mailto:aylarplastik@gmail.com", label: "Email Us" },
     ],
     copyright: "© 2026 Aylar Plastik. All rights reserved.",
   },
@@ -217,7 +217,7 @@ const en = {
       },
     ],
     contactTitle: "Contact",
-    contactBody: "For more information, you can contact us at info@aylarplastik.com.",
+    contactBody: "For more information, you can contact us at aylarplastik@gmail.com.",
   },
   privacy: {
     badge: "Privacy Policy",
@@ -251,7 +251,7 @@ const en = {
       },
     ],
     contactTitle: "Contact",
-    contactBody: "For any questions regarding this policy or your data, please contact us at info@aylarplastik.com.",
+    contactBody: "For any questions regarding this policy or your data, please contact us at aylarplastik@gmail.com.",
   },
 },
 references: {

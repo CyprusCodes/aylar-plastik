@@ -174,7 +174,7 @@ products: {
     ],
     socialLinks: [
       { href: "/#contact", label: "Teklif Talep Et" },
-      { href: "mailto:info@aylarplastik.com", label: "E-posta Gönder" },
+      { href: "mailto:aylarplastik@gmail.com", label: "E-posta Gönder" },
     ],
     copyright: "© 2026 Aylar Plastik. Tüm hakları saklıdır.",
   },
@@ -217,7 +217,7 @@ products: {
       },
     ],
     contactTitle: "İletişim",
-    contactBody: "Daha fazla bilgi için info@aylarplastik.com adresinden bizimle iletişime geçebilirsiniz.",
+    contactBody: "Daha fazla bilgi için aylarplastik@gmail.com adresinden bizimle iletişime geçebilirsiniz.",
   },
   privacy: {
     badge: "Gizlilik Politikası",
@@ -251,7 +251,7 @@ products: {
       },
     ],
     contactTitle: "İletişim",
-    contactBody: "Bu politika veya verilerinizle ilgili sorularınız için info@aylarplastik.com adresinden bizimle iletişime geçebilirsiniz.",
+    contactBody: "Bu politika veya verilerinizle ilgili sorularınız için aylarplastik@gmail.com adresinden bizimle iletişime geçebilirsiniz.",
   },
 },
 references: {

@@ -75,7 +75,7 @@ export function ContactSection() {
                   {t.contact.email}
                 </p>
                 <p className="mt-2 text-lg font-semibold">
-                  info@aylarplastik.com
+                  aylarplastik@gmail.com
                 </p>
               </div>
 
